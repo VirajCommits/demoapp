@@ -1,16 +1,16 @@
-# Airline Check-in Demo
+# Airline Check-in Demo App
 
-A conversational airline check-in experience built with React, TypeScript, and Tailwind CSS. This demo showcases an interactive chat interface that simulates the check-in process for both new and returning travelers.
+A conversational airline check-in experience built with React, TypeScript, and Vite. This demo showcases an interactive chat interface that simulates the airline check-in process with voice input capabilities and reference menus.
 
 ## Features
 
-- **Two Demo Paths**: New traveler and Returning traveler flows
-- **Interactive Chat**: Click-through conversation with quick reply buttons
-- **Seat Selection**: Interactive seat map modal with visual seat selection
-- **Boarding Pass**: Generated boarding pass with QR code
-- **Accessibility**: Full keyboard navigation and screen reader support
-- **Animations**: Smooth micro-animations with Framer Motion
-- **Mobile-First**: Designed to look like a native mobile app
+- 🎤 **Voice Input**: Simulated voice recognition with context-aware responses
+- 📱 **Mobile-First Design**: Phone frame UI with responsive layout
+- 🗣️ **Conversational Flow**: Natural chat interface for check-in process
+- 📋 **Reference Menus**: Quick reference sheets for seat, meal, and bag options
+- ✈️ **Seat Selection**: Interactive seat map with aircraft view
+- 🎯 **Two User Flows**: New traveler and returning traveler experiences
+- 🎨 **Modern UI**: Built with Tailwind CSS and Framer Motion animations
 
 ## Tech Stack
 
@@ -18,108 +18,122 @@ A conversational airline check-in experience built with React, TypeScript, and T
 - **Vite** for fast development and building
 - **Tailwind CSS** for styling
 - **Framer Motion** for animations
-- **State Management** with useReducer for scenario flow
+- **State Management** with useReducer for conversation flow
 
-## Installation & Setup
+## Getting Started
 
-1. Install dependencies:
+### Prerequisites
 
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/VirajCommits/demoapp.git
+cd demoapp
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Start the development server:
-
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-3. Open your browser to `http://localhost:5173`
+4. Open your browser and navigate to `http://localhost:5173`
 
-## Usage
+### Running on Local Network
 
-### Switching Between Flows
+To access the app from another device on your local network:
 
-- Use the toggle at the top to switch between "New traveler" and "Returning traveler"
-- The "New traveler" flow includes meal selection and defaults saving
-- The "Returning traveler" flow skips meal selection and uses saved preferences
+```bash
+npm run dev -- --host
+```
 
-### Navigation
-
-- **Quick Replies**: Click any quick reply button to advance the conversation
-- **Seat Map**: Click "See seat map" to open the interactive seat selection modal
-- **Reset**: Use the "Reset" button to restart the scenario from the beginning
-- **Keyboard**: All interactive elements support keyboard navigation
-
-### Demo Flows
-
-#### New Traveler Flow
-
-1. Tap the push notification banner
-2. Enter preferences: "Window seat. Veg meal. Two bags."
-3. Select a seat (12A, 11C, or see seat map)
-4. Choose meal preference (if not already selected)
-5. Review summary and agree to compliance
-6. Receive boarding pass and save defaults
-
-#### Returning Traveler Flow
-
-1. Tap the push notification banner
-2. Confirm preselected preferences or make changes
-3. Review summary and agree to compliance
-4. Receive boarding pass (no defaults prompt)
+Then access the app using your computer's IP address (e.g., `http://192.168.1.100:5173`)
 
 ## Project Structure
 
 ```
 src/
 ├── components/          # React components
-│   ├── PhoneFrame.tsx   # Mobile device frame
-│   ├── ChatBubble.tsx   # Chat message bubbles
-│   ├── QuickReplies.tsx # Quick reply buttons
-│   ├── SeatMapModal.tsx # Seat selection modal
-│   ├── BoardingPassCard.tsx # Boarding pass display
-│   ├── SummaryCard.tsx  # Check-in summary
-│   ├── PushBanner.tsx   # Push notification banner
-│   ├── TopBar.tsx       # Header with controls
-│   └── Toggle.tsx       # Toggle switch component
-├── state/               # State management
-│   ├── scenarioEngine.ts # State machine logic
-│   ├── script.ts        # Conversation scripts
-│   └── mockApis.ts      # Mock API functions
-├── styles/
-│   └── tailwind.css     # Tailwind CSS imports
-├── App.tsx              # Main application component
-└── main.tsx             # Application entry point
+│   ├── ChatBubble.tsx   # Individual chat messages
+│   ├── VoiceInput.tsx   # Voice input modal
+│   ├── ReferenceMenu.tsx # Quick reference sheet
+│   ├── SeatMapModal.tsx # Seat selection interface
+│   └── ...
+├── state/              # State management
+│   ├── scenarioEngine.ts # Conversation flow logic
+│   ├── script.ts       # All conversation content
+│   └── mockApis.ts     # Simulated API calls
+└── styles/             # CSS and styling
 ```
 
-## Accessibility Features
+## User Flows
 
-- **Keyboard Navigation**: All interactive elements are keyboard accessible
-- **Screen Reader Support**: Proper ARIA labels and live regions
-- **Focus Management**: Visible focus indicators and logical tab order
-- **Semantic HTML**: Proper heading structure and landmarks
+### New Traveler Flow
+1. Push notification banner
+2. Deep link verification
+3. Voice/text input for preferences
+4. Seat selection with aircraft view
+5. Meal and bag options
+6. Compliance confirmation
+7. Boarding pass generation
+
+### Returning Traveler Flow
+1. Push notification banner
+2. Welcome back message
+3. Pre-selected preferences confirmation
+4. Quick changes via voice input
+5. Boarding pass generation
+
+## Key Features
+
+- **Context-Aware Voice Input**: Different responses based on conversation state
+- **Reference Menus**: Shows available options during voice input
+- **Seat Confirmation**: "Ok confirmed seat 10A. Is there anything else you'd like to change?"
+- **Typing Animation**: Letter-by-letter text display for realistic feel
+- **Auto-scrolling**: Smooth chat scrolling to bottom
+- **Accessibility**: Keyboard navigation and screen reader support
 
 ## Customization
 
-The app uses a simple state machine pattern that makes it easy to:
+- Modify conversation scripts in `src/state/script.ts`
+- Update conversation flow logic in `src/state/scenarioEngine.ts`
+- Customize styling with Tailwind CSS classes
+- Add new components in `src/components/`
 
-- Add new conversation steps
-- Modify existing scripts
-- Add new quick reply options
-- Customize the visual design
+## Scripts
 
-## Development
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-- **Build**: `npm run build`
-- **Preview**: `npm run preview`
-- **Lint**: `npm run lint`
+## Contributing
 
-## Browser Support
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
+## License
 
-The app is optimized for mobile viewports but works on desktop as well.
+This project is for demonstration purposes. Feel free to use and modify as needed.
+
+## Demo
+
+The app demonstrates a modern, conversational airline check-in experience with:
+- Natural language processing simulation
+- Voice input with reference menus
+- Interactive seat selection
+- Streamlined user flows
+- Mobile-optimized interface
+
+Perfect for showcasing conversational UI design and airline industry applications.
